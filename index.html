@@ -2,18 +2,36 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Auto Auth</title>
   </head>
-  <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
 
+  <body>
+    <button class="new-window"
+      data-url = 'staging.stacksocial.com'
+      data-username = '*****'
+      data-password = '*****'>
+      stacksocial Staging
+    </button>
+
+    <button class="new-window"
+      data-url = 'admin.staging.stacksocial.com'
+      data-username = '*****'
+      data-password = '*****'>
+      Stack Admin Staging
+    </button>
+
+    <button class="new-window"
+      data-url = 'admin.staging.stacksocial.com'
+      data-username = '*****'
+      data-password = '*****'>
+      Stack Admin
+    </button>
+
+  </body>
   <script>
     // You can also require other files to run in this process
+
     require('./renderer.js')
+    require('./renderer-process/windows/test_window.js')
   </script>
 </html>
