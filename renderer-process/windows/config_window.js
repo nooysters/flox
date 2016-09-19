@@ -11,10 +11,8 @@ newWindowBtn.addEventListener('click', function (event) {
 
   let {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
   let win = new BrowserWindow({
-    width: width / 2,
-    height: height / 2,
-    x:0,
-    y:0,
+    width: 600,
+    height: 500,
     modal: true
   })
 
