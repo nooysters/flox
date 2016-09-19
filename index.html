@@ -6,25 +6,8 @@
   </head>
 
   <body>
-    <button class="new-window"
-      data-url = 'staging.stacksocial.com'
-      data-username = '*****'
-      data-password = '*****'>
-      stacksocial Staging
-    </button>
-
-    <button class="new-window"
-      data-url = 'admin.staging.stacksocial.com'
-      data-username = '*****'
-      data-password = '*****'>
-      Stack Admin Staging
-    </button>
-
-    <button class="new-window"
-      data-url = 'admin.staging.stacksocial.com'
-      data-username = '*****'
-      data-password = '*****'>
-      Stack Admin
+    <button id="config-window">
+      Configure
     </button>
 
   </body>
@@ -32,6 +15,6 @@
     // You can also require other files to run in this process
 
     require('./renderer.js')
-    require('./renderer-process/windows/test_window.js')
+    require('./renderer-process/windows/config_window.js')
   </script>
 </html>
