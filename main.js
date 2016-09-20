@@ -1,6 +1,13 @@
 const electron = require('electron')
-// Module to control application life.
+const path = require('path')
+const ipc = electron.ipcMain
 const app = electron.app
+const Menu = electron.Menu
+const Tray = electron.Tray
+const storage = require('electron-json-storage')
+const _ = require('underscore')
+const shell = require('electron').shell;
+
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
@@ -10,7 +17,7 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 200, height: 400})
+  mainWindow = new BrowserWindow({show: false})
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`)
@@ -49,3 +56,47 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+ipc.on('put-in-tray', function (event) {
+  const iconName = process.platform === 'win32' ? 'windows-icon.png' : '16x16.png'
+  const iconPath = path.join(__dirname,'assets', 'app-icon', 'pngs', iconName)
+
+  appIcon = new Tray(iconPath)
+
+  let items = getQuickLinks().then((data)=>{
+
+    data.push({
+      label: 'Configure',
+      click: () => {
+        event.sender.send('open-config-window')
+      }
+    })
+
+    const contextMenu = Menu.buildFromTemplate(data)
+    appIcon.setToolTip('in the tray nukka.')
+    appIcon.setContextMenu(contextMenu)
+  })
+
+})
+
+let getQuickLinks = () => {
+  return new Promise( (fulfill, reject) => {
+    storage.get('quicklinks', (error, data) => {
+
+      if (error) throw error
+
+      let items = _(data).reduce((arr, item)=>{
+        arr.push({
+          label: item.url,
+          click: (event) => {
+            let url = `https://${item['http-username']}:${item['http-password']}@${item.url}`
+            shell.openExternal(url)
+          }
+        })
+        return arr
+      }, [])
+
+      fulfill(items)
+    })
+  })
+}

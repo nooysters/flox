@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Skip Basic Auth</title>
+    <style>
+      body {
+        font-family: system, -apple-system, '.SFNSText-Regular', 'SF UI Text', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+        color: #fff;
+        background-color: #00b0ff;
+        font-size: 12px;
+      }
+
+      h2 {
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top:50px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      #container {
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      ul li{
+
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <button id="config-window">
+      Configure
+    </button>
+    <ul id='quicklinks-view'>
+    </ul>
+  </body>
+  <script>
+    require('./renderer-process/windows/config_window.js')
+    require('./renderer-process/native_ui/tray.js')
+    require('./main-process/quicklinks_view.js')
+  </script>
+</html>

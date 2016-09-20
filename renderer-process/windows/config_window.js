@@ -2,10 +2,12 @@ const electron = require('electron')
 const BrowserWindow = electron.remote.BrowserWindow
 const path = require('path')
 const _ = require('underscore');
+const ipc = require('electron').ipcRenderer
+
 
 const newWindowBtn = document.getElementById('config-window')
 
-newWindowBtn.addEventListener('click', function (event) {
+ipc.on('open-config-window', function (event) {
   let configuration = {}
   let modalPath = path.join('file://', __dirname, '../../sections/windows/config_window.html')
 

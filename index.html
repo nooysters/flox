@@ -40,11 +40,16 @@
     <button id="config-window">
       Configure
     </button>
+    <button id="tray-toggle">
+      tray
+    </button>
+
     <ul id='quicklinks-view'>
     </ul>
   </body>
   <script>
     require('./renderer-process/windows/config_window.js')
+    require('./renderer-process/native_ui/tray.js')
     require('./main-process/quicklinks_view.js')
   </script>
 </html>
