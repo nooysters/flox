@@ -64,7 +64,7 @@ ipc.on('put-in-tray', function (event) {
   appIcon = new Tray(iconPath)
 
   let items = getQuickLinks().then((data)=>{
-
+    data.push({type: 'separator'})
     data.push({
       label: 'Configure',
       click: () => {

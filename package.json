@@ -1,7 +1,7 @@
 {
-  "name": "electron-quick-start",
+  "name": "quiver",
   "version": "1.0.0",
-  "description": "a website auto auth launcher",
+  "description": "a toolbar app to store links that require basic auth",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
